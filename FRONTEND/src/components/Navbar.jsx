@@ -1,18 +1,17 @@
-import {HiMenuAlt4} from 'react-icons/hi';
+import {HiMenuAlt4} from "react-icons/hi";
 import {AiOutlineClose} from 'react-icons/ai';
 
-import logo from '../../images/logo.png';
+import logo from "../../images/logo.png";
 
 
 // functional component for items in the navbar
-const NavbarItem = ({ title, classProps}) => {
+const NavBarItem = ({title, classProps}) => {
   return (
-      <li className={`mx-4 cursor-pointer ${classProps} `}>
+      <li className={`mx-4 cursor-pointer ${classProps}`}>
           {title}
       </li>
   );
 }
-
 
 const Navbar = () => {
     return (
@@ -20,8 +19,11 @@ const Navbar = () => {
            <div className="md:flex-[0.5] flex-initial justify-center items-center">
                <img src={ logo } alt="logo" className="w-32 cursor-pointer" />
            </div>
-           <ul className='text-white md:flex hiddent list-none flex-row justify-between items-center flex-initial'>
-               <NavbarItem />
+           <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
+               {["Market", "Exchange", "Stakes", "Wallets"].map((item, index) => (
+                  // for each iteration in the array, show the NavbarItem...item+index makes each iem unique
+                  <NavBarItem key={item + index} title={item} />
+               ))}
            </ul>
        </nav>
     );
