@@ -1,5 +1,6 @@
-import {HiMenuAlt4} from "react-icons/hi";
-import {AiOutlineClose} from "react-icons/ai";
+import {useState } from 'react';
+import {HiMenuAlt4, HiMenu} from "react-icons/hi";
+import {AiOutlineClose, AiOutlineCloseSquare} from "react-icons/ai";
 
 import logo from "../../images/logo.png";   
 
@@ -13,8 +14,7 @@ const NavBarItem = ({ title, classProps }) => {
 };
 
 const Navbar = () => {
-  //  const [toggleMenu, setToggleMenu] = React.useState(false);
-
+  const [toggleMenu, setToggleMenu] = useState(false);
 
     return (
        <nav className="w-full flex md:justify-center justify-between items-center p-4">
@@ -22,7 +22,7 @@ const Navbar = () => {
             <img src={logo} alt="logo" className="w-32 cursor-pointer" />
         </div>
         <ul className="text-yellow-400 md:flex hidden list-none flex-row justify-between items-center flex-initial">
-            {["Market", "Exchange", "Wallets"].map((item, index) => (
+            {["Marchés", "Échanges","Crypto-Éducation", "Wallets"].map((item, index) => (
                <NavBarItem key={item + index} title={item} />
             ))}
             <li className="text-yellow-900 bg-[#d69e2e] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#b7791f] hover:text-yellow-500">
@@ -30,9 +30,25 @@ const Navbar = () => {
             </li>
         </ul>
 
-        {/* responsiveness...mobile screens */}
+        {/* responsiveness...mobile screens navigation */}
         <div className="flex relative">
+           {/* if toggleMenu is turned on, show the AiOutlineClose icon, otherwise show the HiMenuAlt4 icon */}
+           {toggleMenu 
+           ? <AiOutlineClose fontSize={30} className="text-yellow-400 md:hidden cursor-pointer" onClick={()=> setToggleMenu(false)} /> 
+           : <HiMenu fontSize={30} className="text-yellow-400 md:hidden cursor-pointer" onClick={()=> setToggleMenu(true)} />}
            
+           {/* If toggleMenu set to true show nav items*/}
+           {toggleMenu && (
+              <ul className='z-10 fixed top-0 -right-1 p-3 w-[70vw] h-screen shadow-2xl md:hidden list-none
+                             flex flex-col justify-start items-end rounded-md blue-glassmorphism text-yellow-500 animate-slide-in'>
+                  <li className='text-xl w-full my-2'>
+                       <AiOutlineClose onClick={() => setToggleMenu(false)} />
+                  </li>
+                  {["Marchés", "Échanges","Crypto-Éducation", "Wallets"].map((item, index) => (
+                    <NavBarItem key={item + index} title={item} classProps='my-2 text-lg' />
+                  ))}
+              </ul>
+           )}
         </div>
        </nav>
     ); 
