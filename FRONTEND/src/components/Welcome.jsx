@@ -1,5 +1,5 @@
 import { AiFillPlayCircle } from "react-icons/ai";
-import { SiEthereum } from 'react-icons/si';
+import { SiEthereum, SiDior, SiTruenas, SiWoo, SiZoho } from 'react-icons/si';
 import { BsInfoCircle } from 'react-icons/bs';
 
 import { Loader } from './';
@@ -62,7 +62,7 @@ const Welcome = () => {
                     <div className="flex justify-between flex-col w-full h-full">
                        <div className="flex justify-between items-start">
                           <div className="w-10 h-10 rounded-xl border-2 border-white flex justify-center items-center">
-                              <SiEthereum fontSize={22} color="" className={`text-yellow-100`} />
+                              <SiTruenas fontSize={22} color="" className={`text-yellow-100`} />
                           </div>
                           <div fontSize={18} color="" className={`text-yellow-100`}>
                             <BsInfoCircle />
