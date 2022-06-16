@@ -4,6 +4,7 @@ import {AiOutlineClose, AiOutlineCloseSquare} from "react-icons/ai";
 
 import logo from "../../images/logo.png";   
 
+
 // functional component for items in the navbar
 const NavBarItem = ({ title, classProps }) => {
   return (
