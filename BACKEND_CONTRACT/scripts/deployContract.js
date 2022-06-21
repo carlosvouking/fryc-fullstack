@@ -1,5 +1,8 @@
+const hre = require("hardhat");
+
 const main = async() => {
     // deploying the contract transaction.sol
+    const transaction = hre.ethers.getContractFactory("Transactions");
 
 }
 
